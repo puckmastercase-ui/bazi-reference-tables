@@ -1,0 +1,40 @@
+{
+  "name": "bazi-reference-tables",
+  "version": "1.0.0",
+  "description": "Deterministic reference tables for BaZi (八字/四柱) and Chinese astrology software: 十神, 藏干, 十二长生, 地支关系 — plus the Simplified→Traditional term fixes that general converters get wrong.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./data/*": "./data/*"
+  },
+  "files": [
+    "index.js",
+    "data/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node -e \"import('./index.js').then(m => { const g = m.getTenGod('甲','庚'); const s = m.getTwelveStage('甲','亥'); const r = m.getBranchRelations('子','丑'); if (g !== '七杀') throw new Error('ten god mismatch: ' + g); if (s !== '长生') throw new Error('stage mismatch: ' + s); if (!r.length) throw new Error('relations empty'); console.log('ok:', g, s, r.map(x => x.relation).join('/')); })\""
+  },
+  "keywords": [
+    "bazi",
+    "八字",
+    "四柱",
+    "chinese-astrology",
+    "ten-gods",
+    "十神",
+    "hidden-stems",
+    "藏干",
+    "十二长生",
+    "saju",
+    "ziwei",
+    "紫微斗数"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puckmastercase-ui/bazi-reference-tables.git"
+  },
+  "homepage": "https://www.yilibazi.com/"
+}
